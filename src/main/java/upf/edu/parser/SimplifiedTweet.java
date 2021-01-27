@@ -1,6 +1,7 @@
 package upf.edu.parser;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -9,24 +10,24 @@ import java.util.Optional;
 
 public class SimplifiedTweet {
 
-  private static ?? parser = new ????;
-
   private final long tweetId;			  // the id of the tweet ('id')
   private final String text;  		      // the content of the tweet ('text')
   private final long userId;			  // the user id ('user->id')
   private final String userName;		  // the user name ('user'->'name')
   private final String language;          // the language of a tweet ('lang')
   private final long timestampMs;		  // seconds from epoch ('timestamp_ms')
+  
 
   public SimplifiedTweet(long tweetId, String text, long userId, String userName,
                          String language, long timestampMs) {
-
-	  	/*this.tweetID= tweetId; 
-	  	
-	 Optional <TweetSimplified> = Optional
-			 .ofNullable(tweetId)
-			 .ofNullable(userID)
-
+	  
+	this.tweetId=tweetId;
+	this.text=text;
+	this.userId=userId;
+	this.userName=userName;
+	this.language=language;
+	this.timestampMs=timestampMs;
+	
   }
 
   /**
@@ -37,8 +38,21 @@ public class SimplifiedTweet {
    * @return an {@link Optional} of a {@link SimplifiedTweet}
    */
   public static Optional<SimplifiedTweet> fromJson(String jsonStr) {
-
-    // PLACE YOUR CODE HERE!
+	  
+	  
+	  JsonElement je= JsonParser.parseString(jsonStr);
+	  JsonObject jo= je.getAsJsonObject();
+	  
+	  
+	  
+	  Optional <SimplifiedTweet> = Optional
+				 .ofNullable(tweetId)
+				 .ofNullable(userID)
+				 .ofNullable(userName)
+				 .ofNullable(language)
+				 .ofNullable()
+				 
+	
 
   }
 }
