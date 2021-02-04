@@ -1,12 +1,11 @@
 package upf.edu;
 
-import upf.edu.filter.FileLanguageFilter;
-import upf.edu.filter.FilterException;
-import upf.edu.uploader.S3Uploader;
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+
+import upf.edu.filter.FileLanguageFilter;
+import upf.edu.uploader.S3Uploader;
 
 public class TwitterFilter {
     public static void main( String[] args ) throws IOException {

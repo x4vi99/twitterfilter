@@ -43,6 +43,11 @@ public class SimplifiedTweet {
 	  JsonElement je= JsonParser.parseString(jsonStr);
 	  JsonObject jo= je.getAsJsonObject();
 	  
+	  String tweet = null;
+	  
+	  JsonObject tweetObject = jo.get(("id")
+	  
+	 
 	  
 	  
 	  Optional <SimplifiedTweet> = Optional
