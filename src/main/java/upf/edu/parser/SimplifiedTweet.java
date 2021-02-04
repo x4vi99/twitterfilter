@@ -43,20 +43,34 @@ public class SimplifiedTweet {
 	  JsonElement je= JsonParser.parseString(jsonStr);
 	  JsonObject jo= je.getAsJsonObject();
 	  
-	  String tweet = null;
+	  Long tweetId = null;			  
+	  String text = null;  		  
+	  Long userId = null;			  
+	  String userName = null;		  
+	  String language = null;          
+	  Long timestampMs = null;
 	  
-	  JsonObject tweetObject = jo.get(("id")
 	  
-	 
+	  Optional <SimplifiedTweet> tweetopt = Optional.empty();
 	  
+	  if(jo.has("id") && jo.has("text") && jo.has("user")  && jo.has("lang") && jo.has("timestamp_ms")){
+		  JsonObject userObject = jo.get("user").getAsJsonObject();
+		  
+		  if (userObject.has("userName") && userObject.has("id")) {
+			  userName = userObject.get("name").getAsString();
+			  userId = userObject.get("id").getAsLong();
+		  }
+			tweetId = jo.get("id").getAsLong();
+	        text = jo.get("text").getAsString();
+	        language = jo.get("lang").getAsString();
+	        timestampMs = jo.get("timestamp_ms").getAsLong();
+	        SimplifiedTweet tweet = new SimplifiedTweet(tweetId,text,userId,userName,language,timestampMs);
+	        tweetopt = Optional.of(tweet);
+	  }
+	
+	  return tweetopt;
 	  
-	  Optional <SimplifiedTweet> = Optional
-				 .ofNullable(tweetId)
-				 .ofNullable(userID)
-				 .ofNullable(userName)
-				 .ofNullable(language)
-				 .ofNullable()
-				 
+
 	
 
   }
