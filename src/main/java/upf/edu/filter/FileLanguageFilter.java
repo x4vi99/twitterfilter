@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class FileLanguageFilter implements LanguageFilter {
 	private final String inputFile;
 	private final String outputFile;
+	int counter = 0;
 
 	public FileLanguageFilter(String inputFile, String outputFile) {
 		this.inputFile = inputFile;
@@ -42,6 +43,7 @@ public class FileLanguageFilter implements LanguageFilter {
 				if (opt.isPresent()) {
 					tweet = opt.get();
 					if (tweet.getLanguage().equals(language)) {
+						counter++;
 						/*Write Output File*/
 						writer.write("\n##########################################################");
 						writer.newLine();
@@ -73,6 +75,7 @@ public class FileLanguageFilter implements LanguageFilter {
 			}
 			reader.close();
 			writer.close();
+			System.out.println("Number of filtered tweets:"+ counter);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

@@ -2,7 +2,7 @@ package upf.edu;
 
 import upf.edu.filter.FileLanguageFilter;
 import upf.edu.filter.FilterException;
-//import upf.edu.uploader.S3Uploader;
+import upf.edu.uploader.S3Uploader;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -22,8 +22,8 @@ public class TwitterFilter {
 			filter.filterLanguage(language);
 		}
 
-		// final S3Uploader uploader = new S3Uploader(bucket, "prefix", "upf");
-		// uploader.upload(Arrays.asList(outputFile));
+		 final S3Uploader uploader = new S3Uploader(bucket, language, "default");
+		 uploader.upload(Arrays.asList(outputFile));
 
 	}
 }

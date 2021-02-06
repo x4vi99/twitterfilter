@@ -1,11 +1,17 @@
 package upf.edu.uploader;
 
+import java.io.File;
 import java.util.List;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.AmazonS3Exception;
+import com.amazonaws.services.s3.model.Bucket;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 
 public class S3Uploader implements Uploader{
 	
@@ -27,21 +33,35 @@ public class S3Uploader implements Uploader{
 		/*
 		 * Creating client connection 
 		 */
-		
+		/*
 		AWSCredentials credentials = new BasicAWSCredentials(
 				"<AWS accesskey>",
 				"<AWS secretkey>"
 				);
 		
-		//Bucket name es el que tenim guardat com a _bucket, el path es el nostre _prefix i el File("path") es la ruta completa cap al fitxer q hem de pujar
-		AmazonS3 s3client = AmazonS3ClientBuilder
-				.standard()
-				.withCredentials(new AWSStaticCredentialsProvider(credentials))
-				.withRegion(Regions.EU_CENTRAL_1)
+		*/
+		String filename = files.get(0);
+		String filekey = this.prefix+"-"+filename;
+		
+		AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
+				.withRegion(Regions.US_EAST_1)
 				.build();
+	
+		if(!s3Client.doesBucketExistV2(this.bucketName)) {	
+			 Bucket bucket = s3Client.createBucket(this.bucketName);
+		}
+		try {
+			PutObjectRequest request = new PutObjectRequest(this.bucketName,filekey, new File(filename));
+			ObjectMetadata metadata = new ObjectMetadata();
+	        metadata.setContentType("plain/text");
+	        request.setMetadata(metadata);
+			s3Client.putObject(request);
+		} catch (AmazonS3Exception e) {
+			System.err.println(e.getErrorMessage());
+		}
+	
 		
-		s3client.putObject(<bucketname>, "path", new File("path"));
-		
+
 	}
 	
 	
