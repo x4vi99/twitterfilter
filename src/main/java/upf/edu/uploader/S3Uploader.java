@@ -8,10 +8,9 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
-import com.amazonaws.services.s3.model.Bucket;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+
 
 public class S3Uploader implements Uploader{
 	
@@ -48,7 +47,7 @@ public class S3Uploader implements Uploader{
 				.build();
 	
 		if(!s3Client.doesBucketExistV2(this.bucketName)) {	
-			 Bucket bucket = s3Client.createBucket(this.bucketName);
+			 s3Client.createBucket(this.bucketName);
 		}
 		try {
 			PutObjectRequest request = new PutObjectRequest(this.bucketName,filekey, new File(filename));
