@@ -42,6 +42,7 @@ public class FileLanguageFilter implements LanguageFilter {
 				if (opt.isPresent()) {
 					tweet = opt.get();
 					if (tweet.getLanguage().equals(language)) {
+						/*Write Output File*/
 						writer.write("\n##########################################################");
 						writer.newLine();
 						writer.write("Tweet Id: ");
