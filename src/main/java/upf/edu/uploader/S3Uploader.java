@@ -30,7 +30,7 @@ public class S3Uploader implements Uploader {
 		 * Creating client connection
 		 */
 		String filename = files.get(0);
-		String filekey = this.prefix + "-" + filename;
+		String filekey = this.prefix + "/" + filename;
 
 		AmazonS3 s3Client = AmazonS3ClientBuilder.standard().withRegion(Regions.US_EAST_1).build();
 

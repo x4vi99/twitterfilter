@@ -31,7 +31,7 @@ public class TwitterFilterTest
     	SimplifiedTweet tweet;
     	Optional<SimplifiedTweet> opt;
     	
-    	File input = new File("data/Eurovision3.json");
+    	File input = new File("test/Eurovision3.json");
 		Scanner reader = null;
 		try {
 			reader = new Scanner(input);
@@ -56,7 +56,7 @@ public class TwitterFilterTest
     public void invalidJson() {
     	SimplifiedTweet tweet;
     	Optional<SimplifiedTweet> opt;   	
-    	File input = new File("data/invalid.json");
+    	File input = new File("test/invalid.json");
 		Scanner reader = null;
 		try {
 			reader = new Scanner(input);
@@ -79,7 +79,7 @@ public class TwitterFilterTest
     public void missingfield() {
     	SimplifiedTweet tweet;
     	Optional<SimplifiedTweet> opt;   	
-    	File input = new File("data/missing.json");
+    	File input = new File("test/missing.json");
 		Scanner reader = null;
 		try {
 			reader = new Scanner(input);
