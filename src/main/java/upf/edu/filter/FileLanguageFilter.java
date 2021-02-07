@@ -16,7 +16,7 @@ public class FileLanguageFilter implements LanguageFilter {
 		this.outputFile = outputFile;
 	}
 
-	public void filterLanguage(String language) throws IOException {
+	public int filterLanguage(String language) throws IOException {
 		Optional<SimplifiedTweet> opt;
 		SimplifiedTweet tweet;
 
@@ -79,6 +79,7 @@ public class FileLanguageFilter implements LanguageFilter {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		return counter;
 
 	}
 
