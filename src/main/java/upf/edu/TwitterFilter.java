@@ -1,12 +1,15 @@
 package upf.edu;
 
-import upf.edu.filter.FileLanguageFilter;
-import upf.edu.filter.FilterException;
-import upf.edu.uploader.S3Uploader;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+
+import upf.edu.filter.FileLanguageFilter;
+import upf.edu.uploader.S3Uploader;
+
+
+
 
 public class TwitterFilter {
 	public static void main(String[] args) throws IOException {
@@ -16,6 +19,7 @@ public class TwitterFilter {
 		String language = argsList.get(0);
 		String outputFile = argsList.get(1);
 		String bucket = argsList.get(2);
+
 		int num_tweets = 0;
 		
 		System.out

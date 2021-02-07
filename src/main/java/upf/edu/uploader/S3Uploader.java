@@ -32,8 +32,9 @@ public class S3Uploader implements Uploader {
 		String filename = files.get(0);
 		String filekey = this.prefix + "-" + filename;
 
-		AmazonS3 s3Client = AmazonS3ClientBuilder.standard().withRegion(Regions.DEFAULT_REGION).build();
+		AmazonS3 s3Client = AmazonS3ClientBuilder.standard().withRegion(Regions.US_EAST_1).build();
 
+		//If the bucket does not exists we create it
 		if (!s3Client.doesBucketExistV2(this.bucketName)) {
 			s3Client.createBucket(this.bucketName);
 		}
@@ -43,7 +44,9 @@ public class S3Uploader implements Uploader {
 			metadata.setContentType("plain/text");
 			request.setMetadata(metadata);
 			s3Client.putObject(request);
+			System.out.println("Uploaded to aws");
 		} catch (AmazonS3Exception e) {
+			//If you don't have access to the bucket or any other error.
 			System.err.println(e.getErrorMessage());
 		}
 
