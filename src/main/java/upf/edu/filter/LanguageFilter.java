@@ -7,5 +7,5 @@ public interface LanguageFilter {
    * @param language
    * @return
    */
-  void filterLanguage(String language) throws Exception;
+  int filterLanguage(String language) throws Exception;
 }
