@@ -14,3 +14,6 @@
 | Processor | 2,3 GHz Dual-Core Intel Core i5 |
 |-----------|---------------------------------|
 | Memory    | 8 GB 2133 MHz LPDDR3            |
+
+**Extensions**
+Unit Test for parsing tweet, invalid Json and missing field
